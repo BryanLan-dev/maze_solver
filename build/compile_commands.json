@@ -1225,14 +1225,14 @@
 },
 {
   "directory": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-build/lib",
-  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles\\vorbisfile.dir\\includes_C.rsp -g -o CMakeFiles\\vorbisfile.dir\\vorbisfile.c.obj -c C:\\Users\\Noodles\\Documents\\maze_solver\\build\\_deps\\vorbis-src\\lib\\vorbisfile.c",
-  "file": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-src/lib/vorbisfile.c",
-  "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/vorbisfile.c.obj"
-},
-{
-  "directory": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-build/lib",
   "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles\\vorbisenc.dir\\includes_C.rsp -g -o CMakeFiles\\vorbisenc.dir\\vorbisenc.c.obj -c C:\\Users\\Noodles\\Documents\\maze_solver\\build\\_deps\\vorbis-src\\lib\\vorbisenc.c",
   "file": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-src/lib/vorbisenc.c",
   "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisenc.dir/vorbisenc.c.obj"
+},
+{
+  "directory": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-build/lib",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles\\vorbisfile.dir\\includes_C.rsp -g -o CMakeFiles\\vorbisfile.dir\\vorbisfile.c.obj -c C:\\Users\\Noodles\\Documents\\maze_solver\\build\\_deps\\vorbis-src\\lib\\vorbisfile.c",
+  "file": "C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-src/lib/vorbisfile.c",
+  "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/vorbisfile.c.obj"
 }
 ]

@@ -245,15 +245,15 @@
 		},
 		{
 			"backtrace" : 2,
+			"id" : "vorbisenc::@692b0ee2b61df6760d20"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "vorbisfile::@692b0ee2b61df6760d20"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "vorbis::@692b0ee2b61df6760d20"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "vorbisenc::@692b0ee2b61df6760d20"
 		}
 	],
 	"id" : "maze_solver::@6890427a1f51a3e7e1df",
