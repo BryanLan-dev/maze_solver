@@ -1,3 +1,0 @@
-C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-subbuild/CMakeFiles/vorbis-populate.dir
-C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-subbuild/CMakeFiles/edit_cache.dir
-C:/Users/Noodles/Documents/maze_solver/build/_deps/vorbis-subbuild/CMakeFiles/rebuild_cache.dir
