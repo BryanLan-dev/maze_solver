@@ -140,7 +140,8 @@ void Grid::draw(sf::RenderWindow& i_window)
             {
                 //Draw the top wall of the cell if it exists
                 sf::RectangleShape wall(sf::Vector2f(cell_size, 2));
-                wall.setPosition(sf::Vector2f(x * cell_size, y * cell_size));                wall.setFillColor(sf::Color::Black);
+                wall.setPosition(sf::Vector2f(x * cell_size, y * cell_size));                
+                wall.setFillColor(sf::Color::Blue);
                 i_window.draw(wall);
             }
 
@@ -149,7 +150,7 @@ void Grid::draw(sf::RenderWindow& i_window)
                 //Draw the bottom wall of the cell if it exists
                 sf::RectangleShape wall(sf::Vector2f(cell_size, 2));
                 wall.setPosition(sf::Vector2f(x * cell_size, (y + 1) * cell_size - 2));
-                wall.setFillColor(sf::Color::Black);
+                wall.setFillColor(sf::Color::Blue);
                 i_window.draw(wall);
             }
 
@@ -158,7 +159,7 @@ void Grid::draw(sf::RenderWindow& i_window)
                 //Draw the left wall of the cell if it exists
                 sf::RectangleShape wall(sf::Vector2f(2, cell_size));
                 wall.setPosition(sf::Vector2f(x * cell_size, y * cell_size));
-                wall.setFillColor(sf::Color::Black);
+                wall.setFillColor(sf::Color::Blue);
                 i_window.draw(wall);
             }
 
@@ -167,7 +168,7 @@ void Grid::draw(sf::RenderWindow& i_window)
                 //Draw the right wall of the cell if it exists
                 sf::RectangleShape wall(sf::Vector2f(2, cell_size));
                 wall.setPosition(sf::Vector2f((x + 1) * cell_size - 2, y * cell_size));
-                wall.setFillColor(sf::Color::Black);
+                wall.setFillColor(sf::Color::Blue);
                 i_window.draw(wall);
             }
         }
