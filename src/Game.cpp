@@ -5,7 +5,7 @@ Game::Game(Grid& i_grid) :
     window(sf::VideoMode({800u, 600u}), "Maze Solver"),
     grid(i_grid)
 {
-    if (!font.openFromFile("assets/arial.ttf"))
+    if (!font.openFromFile("C:/Windows/Fonts/arial.ttf"))
     {
         std::cerr << "Failed to load font!" << std::endl;
     }
@@ -17,7 +17,7 @@ void Game::run()
     {
         handle_events();
         update();
-        window.clear();
+        window.clear(sf::Color::White);
         draw();
         window.display();
     }
