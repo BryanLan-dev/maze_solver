@@ -121,5 +121,55 @@ void Grid::generate()
         }
         
     }
+}
+    
+//Draw the grid and its cells onto the provided SFML window
+void Grid::draw(sf::RenderWindow& i_window)
+{
+    //Define the size of each cell in pixels
+    const unsigned short cell_size = 25;
 
+    //Iterate through each cell in the grid and draw its walls based on their existence
+    for (unsigned short y = 0; y < height; ++y)
+    {
+        //Iterate through each cell in the current row
+        for (unsigned short x = 0; x < width; ++x)
+        {
+        
+            if (cells[y][x].get_wall_top())
+            {
+                //Draw the top wall of the cell if it exists
+                sf::RectangleShape wall(sf::Vector2f(cell_size, 2));
+                wall.setPosition(sf::Vector2f(x * cell_size, y * cell_size));                wall.setFillColor(sf::Color::Black);
+                i_window.draw(wall);
+            }
+
+            if (cells[y][x].get_wall_bottom())
+            {
+                //Draw the bottom wall of the cell if it exists
+                sf::RectangleShape wall(sf::Vector2f(cell_size, 2));
+                wall.setPosition(sf::Vector2f(x * cell_size, (y + 1) * cell_size - 2));
+                wall.setFillColor(sf::Color::Black);
+                i_window.draw(wall);
+            }
+
+            if (cells[y][x].get_wall_left())
+            {
+                //Draw the left wall of the cell if it exists
+                sf::RectangleShape wall(sf::Vector2f(2, cell_size));
+                wall.setPosition(sf::Vector2f(x * cell_size, y * cell_size));
+                wall.setFillColor(sf::Color::Black);
+                i_window.draw(wall);
+            }
+
+            if (cells[y][x].get_wall_right())
+            {
+                //Draw the right wall of the cell if it exists
+                sf::RectangleShape wall(sf::Vector2f(2, cell_size));
+                wall.setPosition(sf::Vector2f((x + 1) * cell_size - 2, y * cell_size));
+                wall.setFillColor(sf::Color::Black);
+                i_window.draw(wall);
+            }
+        }
+    }
 }
