@@ -1,47 +1,38 @@
-# Maze Solver (C++ / SFML)
+# Maze Solver
 
-**Status: In Progress** 🚧
+A C++ maze generator and solver built with SFML 3. The program procedurally generates a 20x20 maze using recursive backtracking, then solves it with breadth-first search (BFS) to find and display the shortest path from start to end.
 
-A maze generation and pathfinding visualizer built in C++ with SFML. This project is actively being developed — see below for what's working and what's next.
+## Features
 
-## What's Working
+- **Maze generation** — recursive backtracking (DFS-based) carves a solvable maze by knocking down walls between cells, using a custom `RandomManager` for randomness.
+- **Maze solving** — BFS finds the shortest path from the top-left corner to the bottom-right corner, respecting walls, and highlights the solved path.
+- **Rendering** — SFML 3 draws the maze walls and solved path directly to a window.
 
-- 10x10 grid rendering using a `Cell` struct stored in a 1D vector
-- Core pathfinding logic scaffolded:
-  - Recursive backtracking (for maze generation)
-  - Breadth-first search (BFS) (for pathfinding)
-- Build pipeline configured via CMake, compiled with the MSYS2 UCRT64 toolchain
+## Project Structure
 
-## What's Left
+| File | Responsibility |
+|---|---|
+| `Cell` | A single maze cell — tracks its own walls (top/bottom/left/right), position, visited state, and display color. |
+| `RandomManager` | Wraps a `std::mt19937_64` engine with overloaded `get_random(max, min)` methods for every numeric type. |
+| `Grid` | Owns the 2D collection of `Cell`s. Handles maze generation (`generate()`), solving (`solve()`), and rendering (`draw()`). |
+| `DrawText` | Standalone helper function for rendering centered/positioned text with SFML's `Font`/`Text` API. |
+| `Game` | Owns the SFML window and font, runs the main loop (`run()`, `handle_events()`, `update()`, `draw()`). |
+| `main` | Wires everything together: constructs `RandomManager`, `Grid`, generates and solves the maze, then runs `Game`. |
 
-- Wire up recursive backtracking to actually generate maze walls on the grid
-- Animate/visualize the BFS solve step-by-step
-- Add start/end point selection
-- Support grid sizes larger than 10x10
-- Clean up build artifacts from version control
+## How It Works
 
-## Tech Stack
+### Generation
+Starting from `(0,0)`, the algorithm uses an explicit stack to perform depth-first traversal: at each cell it checks all unvisited neighbors, randomly picks one, knocks down the wall between them, and pushes forward. When a cell has no unvisited neighbors, it backtracks by popping the stack — continuing until every cell has been visited.
 
-- **Language:** C++17
-- **Graphics:** SFML
-- **Build system:** CMake
-- **Toolchain:** MSYS2 (UCRT64)
+### Solving
+BFS starts from `(0,0)` and explores the maze layer by layer using a queue, tracking each visited cell's parent. Once the bottom-right corner is reached, the solved path is reconstructed by walking backward through the parent chain and marking each cell along the way.
 
-## Build & Run
+## Built With
 
-```bash
-mkdir build && cd build
-cmake ..
-cmake --build .
-./maze_solver
-```
+- C++
+- [SFML 3](https://www.sfml-dev.org/) — window/graphics rendering
+- MSYS2 UCRT64 (Windows build environment)
 
-*(Adjust the executable name/path if it differs on your system.)*
+## Status
 
-## Why This Project
-
-Built to get hands-on with grid-based pathfinding algorithms and 2D graphics programming in C++, after working with Raylib on a previous project ([Ping Pong](https://github.com/BryanLan-dev/Ping-Pong)). This one dives deeper into algorithmic logic (BFS, backtracking) rather than real-time physics.
-
-## Author
-
-Bryan Landers — [GitHub](https://github.com/BryanLan-dev) | [LinkedIn](https://www.linkedin.com/in/bryan-landers-a5529b370)
+Core pipeline complete: maze generation, BFS solving, and rendering all working end-to-end. Possible future additions: multiple simultaneous mazes, randomized start/end points, animated step-by-step generation/solving visualization.
