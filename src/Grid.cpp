@@ -136,7 +136,12 @@ void Grid::draw(sf::RenderWindow& i_window)
         //Iterate through each cell in the current row
         for (unsigned short x = 0; x < width; ++x)
         {
-        
+            sf::RectangleShape fill(sf::Vector2f(cell_size, cell_size));
+            fill.setPosition(sf::Vector2f(x * cell_size, y * cell_size));
+            fill.setFillColor(cells[y][x].get_color());
+            i_window.draw(fill);
+
+
             if (cells[y][x].get_wall_top())
             {
                 //Draw the top wall of the cell if it exists

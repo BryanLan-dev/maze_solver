@@ -14,7 +14,7 @@ Cell::Cell(unsigned short i_x, unsigned short i_y):
     Wall_right(true),
     x(i_x),
     y(i_y),
-    color(gbl::Cell::COLORS::DEFAULT)
+    color(gbl::Cell::COLORS::MAZE_PATH)
     {
 
     }
