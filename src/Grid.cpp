@@ -3,7 +3,8 @@
 #include "Headers/Cell.hpp"
 #include "Headers/RandomManager.hpp"
 #include "Headers/Grid.hpp"
-
+#include <queue>
+#include <vector>
 
 
 //Constructor to initialize the grid with a reference to the RandomManager instance
@@ -173,4 +174,70 @@ void Grid::draw(sf::RenderWindow& i_window)
             }
         }
     }
+}
+
+
+void Grid::solve()
+{
+    std::queue<Cell*> path;
+    std::vector<std::vector<Cell*>> parent(height, std::vector<Cell*>(width, nullptr));
+
+
+    for(unsigned short y = 0; y < height; ++y)
+    {
+        for (unsigned short x = 0; x < width; ++x)
+        {
+            cells[y][x].set_visited(false);
+        }
+    }
+
+    cells[0][0].set_visited(true);
+    path.push(&cells[0][0]);
+
+    while(!path.empty())
+    {
+        Cell* current_cell = path.front();
+        path.pop();
+
+        if(current_cell->get_x() == width - 1 && current_cell->get_y() == height - 1)
+        {
+            while(current_cell != nullptr)
+            {
+                current_cell->set_color(sf::Color::Red);
+                current_cell = parent[current_cell->get_y()][current_cell->get_x()];
+            }
+            return;
+        }
+
+        std::vector<Cell*> neighbors;
+        
+
+        if(current_cell->get_y() > 0 && !current_cell->get_wall_top() && !cells[current_cell->get_y() - 1][current_cell->get_x()].get_visited())
+        {
+            neighbors.push_back(&cells[current_cell->get_y() - 1][current_cell->get_x()]);
+        }
+
+        if(current_cell->get_y() < height - 1 && !current_cell->get_wall_bottom() && !cells[current_cell->get_y() + 1][current_cell->get_x()].get_visited())
+        {
+            neighbors.push_back(&cells[current_cell->get_y() + 1][current_cell->get_x()]);
+        }
+
+        if(current_cell->get_x() > 0 && !current_cell->get_wall_left() && !cells[current_cell->get_y()][current_cell->get_x() - 1].get_visited())
+        {
+            neighbors.push_back(&cells[current_cell->get_y()][current_cell->get_x() - 1]);
+        }
+
+        if(current_cell->get_x() < width - 1 && !current_cell->get_wall_right() && !cells[current_cell->get_y()][current_cell->get_x() + 1].get_visited())
+        {
+            neighbors.push_back(&cells[current_cell->get_y()][current_cell->get_x() + 1]);
+        }
+
+        for(Cell* neighbor : neighbors)
+        {
+            neighbor->set_visited(true);
+            parent[neighbor->get_y()][neighbor->get_x()] = current_cell;
+            path.push(neighbor);
+        }
+    }
+
 }

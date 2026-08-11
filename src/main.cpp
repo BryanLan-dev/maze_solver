@@ -8,6 +8,7 @@ int main()
     RandomManager random_manager;
     Grid grid(random_manager);
     grid.generate();
+    grid.solve();
     Game game(grid);
     game.run();
 

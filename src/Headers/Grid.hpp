@@ -25,4 +25,5 @@ class Grid{
     Grid(RandomManager& i_random_manager);
     void generate();
     void draw(sf::RenderWindow& i_window);
+    void solve();
 };
