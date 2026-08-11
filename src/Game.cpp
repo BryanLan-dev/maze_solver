@@ -36,6 +36,15 @@ void Game::handle_events()
         {
             window.close();
         }
+
+        if (const auto* key_event = event->getIf<sf::Event::KeyPressed>())
+        {
+            if (key_event->code == sf::Keyboard::Key::Space)
+            {
+                grid.generate();
+                grid.solve();
+            }
+        }
     }
 }
 

@@ -5,7 +5,7 @@
 #include "Headers/Grid.hpp"
 #include <queue>
 #include <vector>
-
+#include "Headers/Global.hpp"
 
 //Constructor to initialize the grid with a reference to the RandomManager instance
 Grid::Grid(RandomManager& i_random_manager):
@@ -26,11 +26,24 @@ Grid::Grid(RandomManager& i_random_manager):
 //Generate the maze using a depth-first search algorithm
 void Grid::generate()
 {
+    //Reset all cells before generating a new maze
+    for (unsigned short y = 0; y < height; ++y)
+    {
+        for (unsigned short x = 0; x < width; ++x)
+        {
+            cells[y][x].set_visited(false);
+            cells[y][x].set_wall_top(true);
+            cells[y][x].set_wall_bottom(true);
+            cells[y][x].set_wall_left(true);
+            cells[y][x].set_wall_right(true);
+            cells[y][x].set_color(gbl::Cell::COLORS::MAZE_PATH);
+        }
+    }
+
     //Stack to hold the path of the maze generation
     std::stack<Cell*> path;
 
     cells[0][0].set_visited(true);
-
     path.push(&cells[0][0]);
     
     //While there are still cells in the path stack, continue generating the maze
