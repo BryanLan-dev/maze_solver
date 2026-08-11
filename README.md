@@ -1,3 +1,5 @@
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/29edf785-56c2-4926-bd0a-62bd131ea450" />
+
 # Maze Solver
 
 A C++ maze generator and solver built with SFML 3. The program procedurally generates a 20x20 maze using recursive backtracking, then solves it with breadth-first search (BFS) to find and display the shortest path from start to end.
